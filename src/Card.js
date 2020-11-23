@@ -1,4 +1,4 @@
-const Card = ({name, height, mass, birth_year}) => {
+const Card = ({key, name, height, mass, birth_year}) => {
     return(
     <div>
         <h1>{name}</h1>

@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import axios from 'axios';
 import Card from './Card';
+const { v4: uuidv4 } = require('uuid');
 
 const Deck = () => {
     //start with an empty deck in state
@@ -22,10 +23,9 @@ const Deck = () => {
                 birth_year: resp.data.birth_year
             }
         ]);
-        console.log(resp.data);
     }
 
-    const cards = deck.map(c => <Card name={c.name} height={c.height} mass={c.mass} birth_year={c.birth_year}/>)
+    const cards = deck.map(c => <Card key={uuidv4()} name={c.name} height={c.height} mass={c.mass} birth_year={c.birth_year}/>)
 
     return(
         <div>
