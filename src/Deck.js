@@ -1,12 +1,12 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import axios from 'axios';
 import Card from './Card';
 import SearchForm from './SearchForm';
 const { v4: uuidv4 } = require('uuid');
 
 const Deck = () => {
-
     const [deck, setDeck] = useState([]);
+    const [running, setRunning] = useState(false);
 
     async function addRandom() {
         const rand = Math.ceil(Math.random() * 82);
@@ -36,12 +36,20 @@ const Deck = () => {
         ]);
     }
 
+    useEffect(() => {
+        if(running) {
+            const timer = setInterval(async () => await addRandom(), 1000);
+        }
+    });
+
+    const auto = () => setRunning(!running);
+
     const cards = deck.map(c => <Card key={c.key} name={c.name} height={c.height} mass={c.mass} birth_year={c.birth_year}/>)
 
     return(
         <div>
             <SearchForm createCard={addSearch}/>
-            <button onClick={addRandom}>Random</button>
+            <button onClick={auto}>Random</button>
             {cards}
         </div>
     )
