@@ -10,15 +10,27 @@ const Deck = () => {
 
     //ok wait. hold on. before we start doin that, lets make a rndom interger to use.
 
-    const rand = Math.ceil(Math.random * 82);
     async function add() {
-        const resp = await axios.get(`https://swapi.dev/api/people/1`);
+        const rand = Math.ceil(Math.random() * 82);
+        const resp = await axios.get(`https://swapi.dev/api/people/${rand}`);
+        setDeck(c => [
+            ...c,
+            {
+                name: resp.data.name,
+                height: resp.data.height,
+                mass: resp.data.mass,
+                birth_year: resp.data.birth_year
+            }
+        ]);
         console.log(resp.data);
     }
+
+    const cards = deck.map(c => <Card name={c.name} height={c.height} mass={c.mass} birth_year={c.birth_year}/>)
 
     return(
         <div>
             <button onClick={add}>Click</button>
+            {cards}
         </div>
     )
 }
