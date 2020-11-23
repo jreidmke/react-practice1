@@ -43,7 +43,7 @@ const Deck = () => {
         }
         return () => {
             clearInterval(timeRef.current);
-            timeRef.current = null;
+            // timeRef.current = null;
         }
     }, [running, setRunning]);
 
