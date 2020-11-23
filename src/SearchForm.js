@@ -10,7 +10,6 @@ function NewCardForm({createCard}) {
 
     const handleChange = (e) => {
         const {name, value} = e.target;
-        console.log(formData);
         setFormData(formData => ({
             ...formData,
             [name]: value
@@ -19,8 +18,7 @@ function NewCardForm({createCard}) {
 
     const input = (e) => {
         e.preventDefault();
-        createCard({...formData, id: uuidv4()});
-        console.log(formData);
+        createCard(formData.name);
         setFormData(INITIAL_STATE);
     }
 
