@@ -7,6 +7,7 @@ const { v4: uuidv4 } = require('uuid');
 const Deck = () => {
 
     const [deck, setDeck] = useState([]);
+
     async function addRandom() {
         const rand = Math.ceil(Math.random() * 82);
         const resp = (await axios.get(`https://swapi.dev/api/people/${rand}`)).data;
