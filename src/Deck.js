@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import axios from 'axios';
 import Card from './Card';
+import SearchForm from './SearchForm';
 const { v4: uuidv4 } = require('uuid');
 
 const Deck = () => {
@@ -24,7 +25,8 @@ const Deck = () => {
 
     return(
         <div>
-            <button onClick={add}>Click</button>
+            <SearchForm/>
+            <button onClick={add}>Random</button>
             {cards}
         </div>
     )
