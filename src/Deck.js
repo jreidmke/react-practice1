@@ -14,12 +14,8 @@ const Deck = () => {
     const [selected, setSelected] = useState([]);
 
     async function addRandom() {
-        const rand = Math.ceil(Math.random() * 82);
-        if(rand in selected) {
-            addRandom();
-        }
-        console.log(deck);
         const resp = (await axios.get(`https://swapi.dev/api/people/${rand}`)).data;
+        console.log(selected);
         setData(resp);
     }
 
