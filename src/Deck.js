@@ -12,10 +12,14 @@ const Deck = () => {
 
     //create state `selected` to prevent repeat random draws.
     const [selected, setSelected] = useState([]);
-    
+
     async function addRandom() {
         const rand = Math.ceil(Math.random() * 82);
-
+        if(rand in selected) {
+            addRandom();
+        }
+        setSelected([...selected, rand]);
+        console.log(selected);
         const resp = (await axios.get(`https://swapi.dev/api/people/${rand}`)).data;
         setData(resp);
     }
