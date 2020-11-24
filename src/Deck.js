@@ -18,8 +18,7 @@ const Deck = () => {
         if(rand in selected) {
             addRandom();
         }
-        setSelected([...selected, rand]);
-        console.log(selected);
+        console.log(deck);
         const resp = (await axios.get(`https://swapi.dev/api/people/${rand}`)).data;
         setData(resp);
     }
@@ -52,13 +51,11 @@ const Deck = () => {
         }
         return () => {
             clearInterval(timeRef.current);
-            // timeRef.current = null;
+            timeRef.current = null;
         }
     }, [running, setRunning]);
 
     const auto = () => {
-        console.log(timeRef);
-        console.log(timeRef.current);
         setRunning(!running)
     };
 
