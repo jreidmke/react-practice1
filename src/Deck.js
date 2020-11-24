@@ -5,9 +5,11 @@ import SearchForm from './SearchForm';
 const { v4: uuidv4 } = require('uuid');
 
 const Deck = () => {
+    // initialize state for deck and auto-run. Create variable timeRef and set it to null.
     const [deck, setDeck] = useState([]);
     const [running, setRunning] = useState(false);
     const timeRef = useRef(null);
+
 
     async function addRandom() {
         const rand = Math.ceil(Math.random() * 82);
